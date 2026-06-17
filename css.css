@@ -1,27 +1,38 @@
-body {
+/* Core viewport layout reset */
+#body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background-color: #000;
-    overflow: hidden;
+    overflow-x: hidden; /* Prevents horizontal broken layout scrollbars */
     position: relative;
+    box-sizing: border-box;
 }
 
+/* Force standard, predictable container bounds across devices */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Isolates background canvas animation layer */
 canvas {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
     pointer-events: none;
 }
 
+/* Main Flashcard interface wrapper */
 #flashcard {
     display: flex;
     position: relative;
     height: 200px;
-    width: 350px;
+    width: min(350px, 90vw); /* Shrinks dynamically on small mobile devices */
     backdrop-filter: blur(2px);
     border: solid;
     border-color: #ffffff;
@@ -31,55 +42,58 @@ canvas {
 }
 
 #flashcard-text {
-    font-size: 40px;
+    font-size: clamp(24px, 4vw, 40px); /* Text shrinks safely on small screens */
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 255, 255);
 }
 
+/* Side settings drawer converted to use responsive layouts */
 #questionsanswers {
-    height: 800px;
-    width: 500px;
+    height: min(800px, 85vh); 
+    width: min(500px, 90vw);  
     border-radius: 15px;
     border: solid;
     display: flex;
+    flex-direction: column; 
     position: absolute;
-    left: -485px;
+    left: calc(-1 * min(500px, 90vw) + 15px); 
     color: rgb(255, 255, 255);
     backdrop-filter: blur(2px);
 }
 
-#questions {
-    height: 365px;
-    width: 450px;
-    border-radius: 15px;
-    border: solid;
-    position: absolute;
-    top: 40px;
-    left: 25px;
-}
 
 #answers {
-    height: 365px;
-    width: 450px;
+    height: 47%;
+    width: 90%;
+    margin: 10px auto;
     border-radius: 15px;
     border: solid;
     position: absolute;
-    top: 410px;
-    left: 25px;
+    top: calc(50% + 10px);
+    left: 35px;
 }
-
+#questions {
+    height: 47%;
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 15px;
+    border: solid;
+    position: absolute;
+    left: 35px;
+    top: 30px;
+}
 
 #answer {
     position: absolute;
     top: 620px;
     height: 45px;
-    width: 235px;
-    left: 763px;
-    background-color:rgba(0, 0, 0, 0);
-    color:white;
+    width: min(235px, 50vw);
+    left: calc(50% - min(175px, 50vw));
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
     border: solid;
     border-radius: 15px;
-    outline:none;
+    outline: none;
     text-align: center;
     backdrop-filter: blur(2px);
 }
@@ -87,15 +101,38 @@ canvas {
 #skip {
     position: absolute;
     top: 620px;
-    height: 52px;
-    width: 100px;
-    left: 1010px;
-    background-color:rgba(0, 0, 0, 0);
-    color:white;
+    height: 45px;
+    width: min(100px, 25vw);
+    left: calc(50% + min(75px, 50vw));
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
     border: solid;
     border-radius: 15px;
-    outline:none;
+    outline: none;
     text-align: center;
     backdrop-filter: blur(2px);
 }
 
+/* SMALL DEVICE OPTIMISATION (Mobile / Tablet Responsive Engine Override) */
+@media (max-width: 1024px) {
+    #body {
+        flex-direction: column; /* Shifts layouts into vertical structure safely */
+        height: auto;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    #questionsanswers {
+        position: relative; /* Breaks out of absolute layer mapping on mobile */
+        left: 0;
+        margin-top: 40px;
+    }
+
+    #answer, #skip {
+        position: relative; /* Keeps button controls grouped within normal flow */
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
