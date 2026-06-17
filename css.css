@@ -99,6 +99,7 @@ canvas {
 }
 
 #skip {
+    cursor: pointer;
     position: absolute;
     top: 620px;
     height: 45px;
