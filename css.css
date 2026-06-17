@@ -90,7 +90,7 @@ canvas {
     height: 52px;
     width: 100px;
     left: 1010px;
-        background-color:rgba(0, 0, 0, 0);
+    background-color:rgba(0, 0, 0, 0);
     color:white;
     border: solid;
     border-radius: 15px;

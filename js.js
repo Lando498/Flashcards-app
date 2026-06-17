@@ -1,6 +1,7 @@
 const flashcard = document.getElementById("flashcard");
 var raiseTween = new Tween(flashcard.style, 'top', Tween.linear, 0, -5, 0.1, 'px');
 var lowerTween = new Tween(flashcard.style, 'top', Tween.linear, -5, 0, 0.1, 'px');
+
 const skip = document.getElementById("skip")
 const answerbox = document.getElementById("answer")
 const box = document.getElementById("questionsanswers")
@@ -73,6 +74,9 @@ flashcard.addEventListener("mouseleave", (event) => {
 });
 
     function updateFlashcardText() {
+            if (currentindex > 15){
+        currentindex = 1
+    }
     let currentQuestion;
     switch (currentindex) {
         case 1: currentQuestion = q1; break;
@@ -92,6 +96,7 @@ flashcard.addEventListener("mouseleave", (event) => {
         case 15: currentQuestion = q15; break;
     }
     document.getElementById("flashcard-text").textContent = currentQuestion;
+
 }
 
 function updateValue(e) {
@@ -186,7 +191,13 @@ function answered(e) {
         case 15: correctAnswer = a15; break;
     }
     if (e.target.value === correctAnswer) {
-        confetti({ position: { x: window.innerWidth / 2, y:  window.innerHeight } });
+    confetti({
+    position: { x: window.innerWidth / 2, y:  window.innerHeight },
+    count: 300,			// Number of particles
+    size: 1,			// Size of the particles
+    velocity: 450,		// Initial particle velocity
+    fade: false			// Particles fall off the screen, or fade out
+});
         e.target.value = ""
         currentindex += 1
         updateFlashcardText()
