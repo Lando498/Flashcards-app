@@ -1,0 +1,67 @@
+#body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#flashcard {
+    display: flex;
+    position: relative;
+    height: 200px;
+    width: 350px;
+    background-color: rgb(158, 55, 165);
+    border: solid;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    
+}
+#flashcard-text{
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#questionsanswers{
+    height: 800px;
+    width: 500px;
+    border-radius: 15px;
+    border: solid;
+    display: flex;
+    position: absolute;
+    left: -15px;
+}
+#questions{
+    height: 365px;
+    width: 450px;
+    border-radius: 15px;
+    border: solid;
+    position: absolute;
+    top: 40px;
+    left: 25px;
+}
+#answers{
+    height: 365px;
+    width: 450px;
+    border-radius: 15px;
+    border: solid;
+    position: absolute;
+    top: 410px;
+    left: 25px;
+}
+#answer{
+    position: absolute;
+    top: 210px;
+    height: 45px;
+    width: 235px;
+    left: 110px;
+}
+#skip{
+    position: absolute;
+    top: 210px;
+    height: 50px;
+    width: 100px;
+    right: 250px;
+}
