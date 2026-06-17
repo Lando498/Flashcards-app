@@ -1,9 +1,20 @@
-#body {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
 }
 
 #flashcard {
@@ -11,20 +22,21 @@
     position: relative;
     height: 200px;
     width: 350px;
-    background-color: rgb(158, 55, 165);
+    backdrop-filter: blur(2px);
     border: solid;
+    border-color: #ffffff;
     border-radius: 15px;
     justify-content: center;
     align-items: center;
-    justify-self: center;
-    
-}
-#flashcard-text{
-    font-size: 40px;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-#questionsanswers{
+#flashcard-text {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+#questionsanswers {
     height: 800px;
     width: 500px;
     border-radius: 15px;
@@ -32,8 +44,11 @@
     display: flex;
     position: absolute;
     left: -485px;
+    color: rgb(255, 255, 255);
+    backdrop-filter: blur(2px);
 }
-#questions{
+
+#questions {
     height: 365px;
     width: 450px;
     border-radius: 15px;
@@ -42,7 +57,8 @@
     top: 40px;
     left: 25px;
 }
-#answers{
+
+#answers {
     height: 365px;
     width: 450px;
     border-radius: 15px;
@@ -51,17 +67,35 @@
     top: 410px;
     left: 25px;
 }
-#answer{
+
+
+#answer {
     position: absolute;
     top: 620px;
     height: 45px;
     width: 235px;
-    left: 870px;
+    left: 763px;
+    background-color:rgba(0, 0, 0, 0);
+    color:white;
+    border: solid;
+    border-radius: 15px;
+    outline:none;
+    text-align: center;
+    backdrop-filter: blur(2px);
 }
-#skip{
+
+#skip {
     position: absolute;
     top: 620px;
-    height: 51px;
+    height: 52px;
     width: 100px;
-    left: 760px;
+    left: 1010px;
+        background-color:rgba(0, 0, 0, 0);
+    color:white;
+    border: solid;
+    border-radius: 15px;
+    outline:none;
+    text-align: center;
+    backdrop-filter: blur(2px);
 }
+
