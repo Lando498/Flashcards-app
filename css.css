@@ -31,7 +31,7 @@
     border: solid;
     display: flex;
     position: absolute;
-    left: -15px;
+    left: -485px;
 }
 #questions{
     height: 365px;
@@ -53,15 +53,15 @@
 }
 #answer{
     position: absolute;
-    top: 210px;
+    top: 620px;
     height: 45px;
     width: 235px;
-    left: 110px;
+    left: 870px;
 }
 #skip{
     position: absolute;
-    top: 210px;
-    height: 50px;
+    top: 620px;
+    height: 51px;
     width: 100px;
-    right: 250px;
+    left: 760px;
 }

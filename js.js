@@ -3,6 +3,7 @@ var raiseTween = new Tween(flashcard.style, 'top', Tween.linear, 0, -5, 0.1, 'px
 var lowerTween = new Tween(flashcard.style, 'top', Tween.linear, -5, 0, 0.1, 'px');
 const skip = document.getElementById("skip")
 const answerbox = document.getElementById("answer")
+const box = document.getElementById("questionsanswers")
 const q1e = document.getElementById("q1")
 const q2e = document.getElementById("q2")
 const q3e = document.getElementById("q3")
@@ -195,4 +196,12 @@ function answered(e) {
 skip.addEventListener("click", (event) => {
             currentindex += 1
         updateFlashcardText()
+});
+var entertween = new Tween(box.style, 'left', Tween.linear, -485, -15, 0.3, 'px');
+var leavetween = new Tween(box.style, 'left', Tween.linear, -15, -485, 0.3, 'px');
+box.addEventListener("mouseenter", (event) => {
+    entertween.start();
+});
+box.addEventListener("mouseleave", (event) => {
+    leavetween.start();
 });
