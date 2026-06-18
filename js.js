@@ -210,8 +210,17 @@ skip.addEventListener("click", (event) => {
 });
 var entertween = new Tween(box.style, 'left', Tween.linear, -485, -15, 0.3, 'px');
 var leavetween = new Tween(box.style, 'left', Tween.linear, -15, -485, 0.3, 'px');
+let cooldown = false
+
+function cooldownend(){
+    cooldown = false
+}
 box.addEventListener("mouseenter", (event) => {
+    if (cooldown == false) {
+    cooldown = true
     entertween.start();
+    window.setTimeout(cooldownend, 2000)
+    }
 });
 box.addEventListener("mouseleave", (event) => {
     leavetween.start();

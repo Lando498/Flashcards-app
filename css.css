@@ -49,7 +49,7 @@ canvas {
 
 /* Side settings drawer converted to use responsive layouts */
 #questionsanswers {
-    height: min(800px, 85vh); 
+    height: min(800px, 100vh); 
     width: min(500px, 90vw);  
     border-radius: 15px;
     border: solid;
@@ -63,7 +63,7 @@ canvas {
 
 
 #answers {
-    height: 47%;
+    height: min(47%, 50%);
     width: 90%;
     margin: 10px auto;
     border-radius: 15px;
@@ -73,7 +73,7 @@ canvas {
     left: 35px;
 }
 #questions {
-    height: 47%;
+    height: min(47%, 50%);
     width: 90%;
     margin: 10px auto;
     border-radius: 15px;
